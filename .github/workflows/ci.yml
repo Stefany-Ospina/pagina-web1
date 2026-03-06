@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # El trabajo se ejecutará en una máquina Ubuntu
+    runs-on: windows-latest  # El trabajo se ejecutará en una máquina Windows
 
     steps:
       # Paso 1: Checkout el código del repositorio
