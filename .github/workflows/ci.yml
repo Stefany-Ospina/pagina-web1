@@ -1,1 +1,38 @@
 
+name: Node.js CI
+
+# Este flujo de trabajo se ejecutará cuando se realice un push o pull request a la rama main
+on:
+  push:
+    branches:
+      - main  # O la rama que desees, como "master"
+  pull_request:
+    branches:
+      - main  # O la rama que desees, como "master"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # El trabajo se ejecutará en una máquina Ubuntu
+
+    steps:
+      # Paso 1: Checkout el código del repositorio
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Paso 2: Configurar Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Versión de Node.js que se usará
+
+      # Paso 3: Instalar dependencias
+      - name: Install dependencies
+        run: npm install  # Instalar dependencias de Node.js
+
+      # Paso 4: Ejecutar pruebas
+      - name: Run tests
+        run: npm test  # Ejecutar pruebas (asegúrate de que esté configurado en tu proyecto)
+
+      # Paso 5: Compilar el proyecto (si usas un empaquetador como Webpack o cualquier otra herramienta)
+      - name: Build project
+        run: npm run build  # Si tienes configurado el proceso de compilación
